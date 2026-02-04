@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Anniversary Scanner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fff0f5;
+      color: #333;
+    }
+    .scanner-box {
+      margin: 50px auto;
+      padding: 30px;
+      border: 4px dashed #ff69b4;
+      width: 300px;
+      border-radius: 20px;
+    }
+    #scanButton {
+      background: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    #scanButton:hover {
+      background: #ff1493;
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ff1493;
+    }
+  </style>
+</head>
+<body>
+  <h2>💖 Anniversary Scanner 💖</h2>
+  <div class="scanner-box">
+    <p>Enter your anniversary date:</p>
+    <input type="date" id="anniversary" />
+    <br><br>
+    <button id="scanButton" onclick="scanAnniversary()">Scan</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function scanAnniversary() {
+      const result = document.getElementById("result");
+      const dateInput = document.getElementById("anniversary").value;
+
+      if (!dateInput) {
+        result.innerText = "Please enter a date first!";
+        return;
+      }
+
+      result.innerText = "🔍 Scanning...";
+      let progress = 0;
+
+      const interval = setInterval(() => {
+        progress += 20;
+        result.innerText = `🔍 Scanning... ${progress}%`;
+        if (progress >= 100) {
+          clearInterval(interval);
+          result.innerText = `🎉 Anniversary detected: ${dateInput} 🎉`;
+        }
+      }, 500); // 0.5 seconds per step
+    }
+  </script>
+</body>
+</html>
