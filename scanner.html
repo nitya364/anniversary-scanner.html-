@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>High-Tech Anniversary Scanner</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      background: #1a1a2e;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      color: #ff69b4;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #ff69b4;
+    }
+    .scanner-box {
+      background: #162447;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff1493;
+      width: 350px;
+    }
+    input[type="date"] {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+    }
+    #scanButton {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 10px;
+      border: none;
+      background: #ff69b4;
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 0 10px #ff1493;
+    }
+    #scanButton:hover {
+      background: #ff1493;
+    }
+    #progress {
+      margin-top: 20px;
+      font-size: 18px;
+      height: 30px;
+    }
+    .fingerprint {
+      margin: 20px auto;
+      width: 100px;
+      height: 100px;
+      background: url('https://i.imgur.com/lx4rGqT.png') no-repeat center;
+      background-size: contain;
+      animation: scan 1s infinite alternate;
+    }
+    @keyframes scan {
+      0% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+      50% { transform: scale(1.05) rotate(5deg); opacity: 0.8; }
+      100% { transform: scale(1) rotate(0deg); opacity: 0.4; }
+    }
+    #result {
+      margin-top: 20px;
+      font-size: 22px;
+      color: #ff1493;
+      text-shadow: 0 0 10px #ff69b4;
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Anniversary Scanner 💖</h1>
+  <div class="scanner-box">
+    <div class="fingerprint"></div>
+    <input type="date" id="anniversary" />
+    <br>
+    <button id="scanButton" onclick="startScan()">Scan</button>
+    <div id="progress"></div>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function startScan() {
+      const dateInput = document.getElementById('anniversary').value;
+      const progress = document.getElementById('progress');
+      const result = document.getElementById('result');
+
+      if (!d
